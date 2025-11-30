@@ -1,6 +1,6 @@
-// Updates all documents in the 'school' collection where name is "Holberton school".
-// It adds the attribute 'address' with the value "972 Mission street".
+// 6-update
+
 db.school.updateMany(
-{ name: "Holberton school" }, // Filter: match documents where name is "Holberton school"
-{ $set: { address: "972 Mission street" } } // Update operation: use $set to add/modify the address field
-)
+  { name: "Holberton school" },      // filter: only documents with name "Holberton school"
+  { $set: { address: "972 Mission street" } }  // update: add the attribute "address" with the specified value
+);
