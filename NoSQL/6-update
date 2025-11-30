@@ -1,7 +1,9 @@
-// JavaScript MongoDB script to update documents.
-// The task is to update all documents in the 'school' collection where the 'name' is "Holberton school".
-// It adds the attribute 'address' with the value "972 Mission street" to all matched documents.
-db.school.updateMany(
-{ name: "Holberton school" }, // Filter: Matches documents where name equals "Holberton school".
-{ $set: { address: "972 Mission street" } } // Update operator: $set adds or replaces the 'address' field.
-)
+// 6-update
+
+var result = db.school.update(
+  { name: "Holberton school" },                 // filter
+  { $set: { address: "972 Mission street" } }, // update
+  { multi: true }                               // update all matching documents
+);
+
+print(result); // MongoDB v3.6 ilə WriteResult formatında çıxır
