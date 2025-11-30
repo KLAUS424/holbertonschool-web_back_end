@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
-""" 10-update_topics.py """
+"""
+A Python function that changes all topics of a school document based on the name.
+"""
+
 
 def update_topics(mongo_collection, name, topics):
     """
-    Update the 'topics' field of a school document based on its name.
+    Changes the 'topics' field for all school documents matching the given 'name'.
 
     Args:
-        mongo_collection: pymongo collection object
-        name (str): the school name to update
-        topics (list of str): the list of topics to set
-
-    Prints:
-        'OK' if update is successful
+        mongo_collection: A pymongo collection object.
+        name (str): The name of the school document(s) to update.
+        topics (list of str): The new list of topics to set for the school(s).
     """
-    if mongo_collection is None or not name:
-        return
+    # The filter specifies which documents to update (matching the school name)
+    filter_query = {"name": name}
 
-    mongo_collection.update_one(
-        {"name": name},                  # filter by school name
-        {"$set": {"topics": topics}}     # set the new topics list
-    )
+    # The update operation uses the $set operator to replace the value
+    # of the 'topics' field with the new list.
+    update_operation = {"$set": {"topics": topics}}
 
-    print("OK")
+    # update_many is used to ensure all documents matching the name are updated.
+    mongo_collection.update_many(filter_query, update_operation)
