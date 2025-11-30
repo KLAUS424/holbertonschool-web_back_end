@@ -21,7 +21,7 @@ def get_nginx_stats():
     # Count documents for each method
     for method in methods:
         count = collection.count_documents({"method": method})
-        print(f"    method {method}: {count}")
+        print(f"\tmethod {method}: {count}")
     # Count status check requests
     status_check = collection.count_documents({
         "method": "GET",
