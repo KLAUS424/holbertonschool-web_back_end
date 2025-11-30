@@ -1,8 +1,15 @@
 // 7-delete
+// Script to delete all documents in the 'school' collection where the 'name' field is "Holberton school".
+// The 'deleteMany()' method is used as it aligns with MongoDB v3.6.3 support and the expected
+// result format, which includes 'deletedCount'.
 
-// Delete all documents with name "Holberton school"
-// Use "delete()" to ensure WriteResult is returned for MongoDB v3.6 tests
-var result = db.school.delete({ name: "Holberton school" });
+// Define the filter criteria: find all documents with name = "Holberton school".
+const filter = { name: "Holberton school" };
 
-// Print the result so the test can capture it
-printjson(result);
+// Execute the delete operation.
+var result = db.school.deleteMany(filter);
+
+// Print the result object.
+// Expected output example: { "acknowledged" : true, "deletedCount" : N }
+print(result);
+
