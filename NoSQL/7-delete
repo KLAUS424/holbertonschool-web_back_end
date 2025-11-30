@@ -1,7 +1,8 @@
 // 7-delete
-// Deletes all documents in the 'school' collection where the 'name' field is "Holberton school".
-// The deleteMany() method is used to return the expected result object { acknowledged: true, deletedCount: N }.
-var result = db.school.deleteMany({ name: "Holberton school" });
 
-// Prints the result object to stdout.
-print(result);
+// Remove all documents where name is "Holberton school"
+// Using remove() instead of deleteMany() to ensure WriteResult is returned
+var result = db.school.remove({ name: "Holberton school" });
+
+// Print the result so test can capture it
+printjson(result);
