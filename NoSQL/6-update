@@ -1,7 +1,10 @@
 // 6-update
 
-db.school.updateMany(
-  { name: "Holberton school" },      // filter: only documents with name "Holberton school"
-  { $set: { address: "972 Mission street" } },  // update: add the attribute "address"
-  { upsert: false }                   // do not insert if no document matches
+var result = db.school.updateMany(
+  { name: "Holberton school" },        // filter
+  { $set: { address: "972 Mission street" } },  // update
+  { upsert: false }                     // do not insert if no match
 );
+
+printjson(result);  // <--- add this to actually print WriteResult
+
