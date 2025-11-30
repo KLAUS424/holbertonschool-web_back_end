@@ -1,0 +1,16 @@
+// 7-delete
+// Script to delete all documents where the 'name' field is "Holberton school"
+// The method db.collection.deleteMany(filter) is used to ensure all matches are removed.
+
+// Filter criteria: find all documents where name equals "Holberton school"
+const filter = { name: "Holberton school" };
+
+// Execute the delete operation
+// deleteMany is the best method to ensure all matching documents are deleted.
+var result = db.school.deleteMany(filter);
+
+// Print the result object. 
+// It will show the status (acknowledged) and the number of documents deleted (deletedCount).
+print(result);
+
+// Example output: { "acknowledged" : true, "deletedCount" : N }
