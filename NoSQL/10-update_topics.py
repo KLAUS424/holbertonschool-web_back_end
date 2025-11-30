@@ -10,15 +10,11 @@ def update_topics(mongo_collection, name, topics):
         name (str): the school name to update
         topics (list of str): the list of topics to set
 
-    Returns:
-        The result of the update operation
+    Prints:
+        'OK' if update is successful
     """
     if mongo_collection is None or not name:
-        return None
+        return
 
-    result = mongo_collection.update_one(
-        {"name": name},       # filter by school name
-        {"$set": {"topics": topics}}  # set the new topics list
-    )
-
-    return result
+    mongo_collection.update_one(
+        {"name": name},
