@@ -17,4 +17,8 @@ def update_topics(mongo_collection, name, topics):
         return
 
     mongo_collection.update_one(
-        {"name": name},
+        {"name": name},                  # filter by school name
+        {"$set": {"topics": topics}}     # set the new topics list
+    )
+
+    print("OK")
